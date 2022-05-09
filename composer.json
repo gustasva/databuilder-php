@@ -1,0 +1,30 @@
+{
+    "name": "gustasva/databuilder-php",
+    "description": "Creating Spryker databuilders from php files for better autocompletion",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gustas",
+            "email": "gustas.valdavicius@gmail.com"
+        }
+    ],
+    "require": {
+      "php": "^7.4 || ^8.0"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "^1.9",
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "^3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Databuilder\\": "src/Databuilder/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+           "Databuilder\\Test\\": "test/Databuilder/"
+        }
+    }
+}
