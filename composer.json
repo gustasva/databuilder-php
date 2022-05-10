@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-      "php": "^7.4 || ^8.0"
+        "ext-dom": "*",
+        "php": "^7.4 || ^8.0"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.9",
@@ -19,12 +20,21 @@
     },
     "autoload": {
         "psr-4": {
-            "Databuilder\\": "src/Databuilder/"
+            "Databuilder\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-           "Databuilder\\Test\\": "test/Databuilder/"
+           "DatabuilderTests\\": "tests/"
         }
+    },
+    "scripts": {
+      "phpcs": [
+        " ./vendor/bin/phpcs --standard=PSR12 src",
+        " ./vendor/bin/phpcs --standard=PSR12 tests"
+      ],
+      "test": [
+        "./vendor/bin/phpunit tests"
+      ]
     }
 }
