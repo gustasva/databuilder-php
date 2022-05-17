@@ -34,7 +34,7 @@
         " ./vendor/bin/phpcs --standard=PSR12 tests"
       ],
       "test": [
-        "./vendor/bin/phpunit tests"
+        "./vendor/bin/phpunit --colors=always tests"
       ]
     }
 }

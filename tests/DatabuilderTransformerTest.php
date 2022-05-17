@@ -2,15 +2,15 @@
 
 namespace DatabuilderTests;
 
+use Databuilder\DatabuilderTransformer;
+use DatabuilderTests\data\TestDatabuilder;
 use DOMDocument;
-use DOMElement;
 use Faker\Factory;
 use Faker\Generator;
 use PHPUnit\Framework\TestCase;
 
 class DatabuilderTransformerTest extends TestCase
 {
-    private Generator $faker;
     private DatabuilderTransformer $transformer;
 
     protected function setUp(): void
@@ -25,18 +25,18 @@ class DatabuilderTransformerTest extends TestCase
         $phpDatabuilder = $this->getPhpDatabuilder();
         $xmlDatabuilder = $this->getXmlDatabuilder();
 
-        $this->transformer->transform($phpDatabuilder);
+        $transformerPhpDatabuilder = $this->transformer->transform($phpDatabuilder);
 
-        $this->assertEquals($phpDatabuilder, $xmlDatabuilder);
+        $this->assertEquals(
+            $xmlDatabuilder,
+            $transformerPhpDatabuilder,
+            'Databuilder transformation has failed!'
+        );
     }
 
-    protected function getPhpDatabuilder(): array
+    protected function getPhpDatabuilder(): TestDatabuilder
     {
-        return [
-            'TestRegistration' => [
-                'store' => $this->faker->word()
-            ]
-        ];
+        return new TestDatabuilder();
     }
 
     private function getXmlDatabuilder(): DOMDocument
