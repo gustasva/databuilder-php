@@ -10,8 +10,14 @@ class TestDatabuilder extends Databuilder
     {
         return [
             'TestRegistration' => [
-                'store' => $this->faker->word()
-            ]
+                'store' => $this->faker->word(),
+                'name' => '=test',
+                'age' => $this->faker->randomNumber()
+            ],
+            'AnotherObject' => [
+                'test' => $this->faker->randomElement(['a', 'b']),
+                'randomness' => $this->faker->word,
+            ],
         ];
     }
 }
