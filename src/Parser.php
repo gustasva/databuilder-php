@@ -82,10 +82,17 @@ class Parser
         preg_match('/(?<==>|=> )[$\'"].*/', $line, $propertyValue);
 
         if (is_array($propertyValue)) {
-            return $this->stripTrailingCommasAndQuotes(reset($propertyValue));
+            $propertyValue = $this->stripTrailingCommasAndQuotes(reset($propertyValue));
+
+            return $this->stripFakerCall($propertyValue);
         }
 
         return $propertyValue;
+    }
+
+    protected function stripFakerCall(string $propertyValue): string
+    {
+        return str_replace('$this->faker->', '', $propertyValue);
     }
 
     protected function searchForQuotedValueAndReturnFirstValue(string $line): string

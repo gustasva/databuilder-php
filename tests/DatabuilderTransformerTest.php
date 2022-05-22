@@ -5,9 +5,10 @@ namespace DatabuilderTests;
 use Databuilder\DatabuilderTransformer;
 use DatabuilderTests\data\TestDatabuilder;
 use DOMDocument;
+use DOMException;
 use Faker\Factory;
-use Faker\Generator;
 use PHPUnit\Framework\TestCase;
+use ReflectionException;
 
 class DatabuilderTransformerTest extends TestCase
 {
@@ -20,6 +21,10 @@ class DatabuilderTransformerTest extends TestCase
         $this->transformer = new DatabuilderTransformer();
     }
 
+    /**
+     * @throws ReflectionException
+     * @throws DOMException
+     */
     public function testTransformsPhpDatabuilderToXmlDatabuilder(): void
     {
         $phpDatabuilder = $this->getPhpDatabuilder();
@@ -28,8 +33,8 @@ class DatabuilderTransformerTest extends TestCase
         $transformerPhpDatabuilder = $this->transformer->transform($phpDatabuilder);
 
         $this->assertEquals(
-            $xmlDatabuilder,
-            $transformerPhpDatabuilder,
+            $xmlDatabuilder->saveXML(),
+            $transformerPhpDatabuilder->saveXML(),
             'Databuilder transformation has failed!'
         );
     }
@@ -57,8 +62,34 @@ class DatabuilderTransformerTest extends TestCase
         $property->setAttribute('name', 'store');
         $property->setAttribute('dataBuilderRule', 'word()');
 
+        $property2 = $doc->createElement('property');
+        $property2->setAttribute('name', 'name');
+        $property2->setAttribute('dataBuilderRule', '=test');
+
+        $property3 = $doc->createElement('property');
+        $property3->setAttribute('name', 'age');
+        $property3->setAttribute('dataBuilderRule', 'randomNumber()');
+
         $transfer->appendChild($property);
+        $transfer->appendChild($property2);
+        $transfer->appendChild($property3);
+
+        $transfer2 = $doc->createElement('transfer');
+        $transfer2->setAttribute('name', 'AnotherObject');
+
+        $property = $doc->createElement('property');
+        $property->setAttribute('name', 'test');
+        $property->setAttribute('dataBuilderRule', 'randomElement([\'a\', \'b\'])');
+
+        $property2 = $doc->createElement('property');
+        $property2->setAttribute('name', 'randomness');
+        $property2->setAttribute('dataBuilderRule', 'word');
+
+        $transfer2->appendChild($property);
+        $transfer2->appendChild($property2);
+
         $xmlDatabuilder->appendChild($transfer);
+        $xmlDatabuilder->appendChild($transfer2);
         $doc->appendChild($xmlDatabuilder);
 
         return $doc;
