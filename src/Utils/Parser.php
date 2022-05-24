@@ -1,7 +1,8 @@
 <?php
 
-namespace Databuilder;
+namespace Databuilder\Utils;
 
+use Databuilder\DatabuilderInterface;
 use ReflectionClass;
 use ReflectionException;
 

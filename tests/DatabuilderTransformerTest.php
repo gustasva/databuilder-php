@@ -3,7 +3,7 @@
 namespace DatabuilderTests;
 
 use Databuilder\DatabuilderTransformer;
-use DatabuilderTests\data\TestDatabuilder;
+use DatabuilderTests\_data\Builders\TestDatabuilder;
 use DOMDocument;
 use DOMException;
 use Faker\Factory;
@@ -47,6 +47,7 @@ class DatabuilderTransformerTest extends TestCase
     private function getXmlDatabuilder(): DOMDocument
     {
         $doc = new DOMDocument('1.0');
+        $doc->formatOutput = true;
         $xmlDatabuilder = $doc->createElement('transfers');
         $xmlDatabuilder->setAttribute('xmlns', 'spryker:databuilder-01');
         $xmlDatabuilder->setAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');

@@ -2,6 +2,9 @@
 
 namespace Databuilder;
 
+use Databuilder\Utils\Parser;
+use Databuilder\Utils\XmlBuilder;
+use DOMDocument;
 use DOMException;
 use ReflectionException;
 
@@ -20,7 +23,7 @@ class DatabuilderTransformer
      * @throws ReflectionException
      * @throws DOMException
      */
-    public function transform(DatabuilderInterface $phpDatabuilder)
+    public function transform(DatabuilderInterface $phpDatabuilder): DOMDocument
     {
         $parsedData = $this->parser->parse($phpDatabuilder);
 

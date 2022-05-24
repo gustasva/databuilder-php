@@ -1,40 +1,43 @@
 {
-    "name": "gustasva/databuilder-php",
-    "description": "Creating Spryker databuilders from php files for better autocompletion",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Gustas",
-            "email": "gustas.valdavicius@gmail.com"
-        }
-    ],
-    "require": {
-        "ext-dom": "*",
-        "php": "^7.4 || ^8.0"
-    },
-    "require-dev": {
-        "fzaninotto/faker": "^1.9",
-        "phpunit/phpunit": "^9.5",
-        "squizlabs/php_codesniffer": "^3.6"
-    },
-    "autoload": {
-        "psr-4": {
-            "Databuilder\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-           "DatabuilderTests\\": "tests/"
-        }
-    },
-    "scripts": {
-      "phpcs": [
-        " ./vendor/bin/phpcs --standard=PSR12 src",
-        " ./vendor/bin/phpcs --standard=PSR12 tests"
-      ],
-      "test": [
-        "./vendor/bin/phpunit --colors=always tests"
-      ]
+  "name": "gustasva/databuilder-php",
+  "description": "Creating Spryker databuilders from php files for better autocompletion",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gustas",
+      "email": "gustas.valdavicius@gmail.com"
     }
+  ],
+  "require": {
+    "ext-dom": "*",
+    "php": "^7.4 || ^8.0"
+  },
+  "require-dev": {
+    "fzaninotto/faker": "^1.9",
+    "phpunit/phpunit": "^9.5",
+    "squizlabs/php_codesniffer": "^3.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Databuilder\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DatabuilderTests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "phpcs": [
+      " ./vendor/bin/phpcs --standard=PSR12 src",
+      " ./vendor/bin/phpcs --standard=PSR12 tests"
+    ],
+    "test": [
+      "./vendor/bin/phpunit --colors=always tests"
+    ]
+  },
+  "bin": [
+    "bin/databuilder"
+  ]
 }

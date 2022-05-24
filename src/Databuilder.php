@@ -13,6 +13,4 @@ abstract class Databuilder implements DatabuilderInterface
     {
         $this->faker = Factory::create();
     }
-
-    abstract public function build(): array;
 }

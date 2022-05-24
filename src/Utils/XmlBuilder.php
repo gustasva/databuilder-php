@@ -1,6 +1,6 @@
 <?php
 
-namespace Databuilder;
+namespace Databuilder\Utils;
 
 use DOMDocument;
 use DOMElement;
@@ -27,6 +27,7 @@ class XmlBuilder
     public function generate(array $databuilder): DOMDocument
     {
         $doc = new DOMDocument(static::XML_VERSION);
+        $doc->formatOutput = true;
         $transfers = $this->createTransfersElement($doc);
 
         /**
