@@ -30,8 +30,12 @@
   },
   "scripts": {
     "phpcs": [
-      " ./vendor/bin/phpcs --standard=PSR12 src",
-      " ./vendor/bin/phpcs --standard=PSR12 tests"
+      "./vendor/bin/phpcs --standard=PSR12 src",
+      "./vendor/bin/phpcs --standard=PSR12 tests"
+    ],
+    "phpcsfix": [
+      "./vendor/bin/phpcbf --standard=PSR12 src",
+      "./vendor/bin/phpcbf --standard=PSR12 tests"
     ],
     "test": [
       "./vendor/bin/phpunit --colors=always tests"
