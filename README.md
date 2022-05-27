@@ -55,3 +55,9 @@ return [
         'name' => $this->faker->word(),
         'value' => '=thisIsSomeValue',
 ```
+
+5. Run databuilder generator:
+
+```sh
+vendor/bin/databuilder
+```
