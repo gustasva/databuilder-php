@@ -34,7 +34,7 @@ composer require --dev gustasva/databuilder-php
 4. Next we create Databuilders. Naming convention here is *Something*Databuilder
 
 ``` php
-namespace Data\Builders;
+namespace _data\Builders;
 
 use Databuilder\Databuilder;
 
