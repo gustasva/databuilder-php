@@ -2,6 +2,7 @@
 
 namespace Databuilder\Utils;
 
+use Databuilder\DatabuilderValidator;
 use DOMDocument;
 use DOMElement;
 use DOMException;
@@ -21,6 +22,14 @@ class XmlBuilder
     public const ATTRIBUTE_XMLNS_XSI = 'http://www.w3.org/2001/XMLSchema-instance';
     public const ATTRIBUTE_XSI_SCHEMA_LOCATION = 'spryker:databuilder-01 http://static.spryker.com/databuilder-01.xsd';
 
+    public DatabuilderValidator $validator;
+
+    public function __construct(
+        DatabuilderValidator $validator
+    ) {
+        $this->validator = $validator;
+    }
+
     /**
      * @throws DOMException
      */
@@ -35,6 +44,7 @@ class XmlBuilder
          * @var string[] $properties
          */
         foreach ($databuilder as $transferName => $properties) {
+            $this->validator->validate($transferName, static::ELEMENT_TRANSFER);
             $transfer = $doc->createElement(static::ELEMENT_TRANSFER);
             $transfer->setAttribute(static::ATTRIBUTE_NAME, $transferName);
 
@@ -43,6 +53,7 @@ class XmlBuilder
              * @var string $rule
              */
             foreach ($properties as $name => $rule) {
+                $this->validator->validate($name, static::ELEMENT_PROPERTY);
                 $property = $doc->createElement(static::ELEMENT_PROPERTY);
                 $property->setAttribute(static::ATTRIBUTE_NAME, $name);
                 $property->setAttribute(static::ATTRIBUTE_RULE, $rule);

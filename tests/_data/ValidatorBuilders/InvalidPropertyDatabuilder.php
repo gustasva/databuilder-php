@@ -1,6 +1,6 @@
 <?php
 
-namespace DatabuilderTests\_data\Builders;
+namespace DatabuilderTests\_data\ValidatorBuilders;
 
 use Databuilder\Databuilder;
 
@@ -12,7 +12,7 @@ class InvalidPropertyDatabuilder extends Databuilder
     {
         return [
             'ValidTransferName' => [
-                'invalidPProperty' => $this->faker->word()
+                'InvalidPProperty' => $this->faker->word()
             ]
         ];
     }

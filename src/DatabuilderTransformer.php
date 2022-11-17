@@ -16,7 +16,9 @@ class DatabuilderTransformer
     public function __construct()
     {
         $this->parser = new Parser();
-        $this->generator = new XmlBuilder();
+        $this->generator = new XmlBuilder(
+            new DatabuilderValidator()
+        );
     }
 
     /**
@@ -27,8 +29,6 @@ class DatabuilderTransformer
     {
         $parsedData = $this->parser->parse($phpDatabuilder);
 
-        $databuilder = $this->generator->generate($parsedData);
-
-        return $databuilder;
+        return $this->generator->generate($parsedData);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace DatabuilderTests\_data\Builders;
+namespace DatabuilderTests\_data\ValidatorBuilders;
 
 use Databuilder\Databuilder;
 
@@ -11,7 +11,7 @@ class InvalidDatabuilderTransferDatabuilder extends Databuilder
     public function build(): array
     {
         return [
-            'invalidName' => [
+            'InvalidNName' => [
                 'test' => $this->faker->word()
             ]
         ];

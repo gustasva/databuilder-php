@@ -6,8 +6,8 @@ use Databuilder\DatabuilderInterface;
 use Databuilder\DatabuilderTransformer;
 use Databuilder\Exception\InvalidDatabuilderTransferNameException;
 use Databuilder\Exception\InvalidPropertyException;
-use DatabuilderTests\_data\Builders\InvalidDatabuilderTransferDatabuilder;
-use DatabuilderTests\_data\Builders\InvalidPropertyDatabuilder;
+use DatabuilderTests\_data\ValidatorBuilders\InvalidDatabuilderTransferDatabuilder;
+use DatabuilderTests\_data\ValidatorBuilders\InvalidPropertyDatabuilder;
 use PHPUnit\Framework\TestCase;
 
 class DatabuilderValidationTest extends TestCase
@@ -26,8 +26,8 @@ class DatabuilderValidationTest extends TestCase
      */
     public function testValidatorThrowsExceptionWhenPropertyHasTwoCapitalLettersInARow(): void
     {
-        $databuilder = $this->getDatabuilderWithInvalidProperty();
-        $this->expectException(InvalidPropertyException::class);
+        $databuilder = $this->getDatabuilderWithInvalidDatabuilderTransferName();
+        $this->expectException(InvalidDatabuilderTransferNameException::class);
 
         $this->transformer->transform($databuilder);
     }
@@ -36,10 +36,10 @@ class DatabuilderValidationTest extends TestCase
      * @throws \DOMException
      * @throws \ReflectionException
      */
-    public function testValidatorThrowsExceptionWhenDatabuilderTransferNameIsNotPascalCase(): void
+    public function testValidatorThrowsExceptionWhenDatabuilderTransferNameIsNotCamelCase(): void
     {
-        $databuilder = $this->getDatabuilderWithInvalidDatabuilderTransferName();
-        $this->expectException(InvalidDatabuilderTransferNameException::class);
+        $databuilder = $this->getDatabuilderWithInvalidProperty();
+        $this->expectException(InvalidPropertyException::class);
 
         $this->transformer->transform($databuilder);
     }
