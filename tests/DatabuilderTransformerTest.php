@@ -6,7 +6,6 @@ use Databuilder\DatabuilderTransformer;
 use DatabuilderTests\_data\Builders\TestDatabuilder;
 use DOMDocument;
 use DOMException;
-use Faker\Factory;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 
@@ -17,7 +16,6 @@ class DatabuilderTransformerTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->faker = Factory::create();
         $this->transformer = new DatabuilderTransformer();
     }
 

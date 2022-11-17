@@ -20,8 +20,7 @@ class DatabuilderGeneratorTest extends TestCase
     {
         parent::tearDown();
 
-        unlink(__DIR__ . '/_data/test.databuilder.xml');
-        unlink(__DIR__ . '/_data/another.databuilder.xml');
+        array_map('unlink', glob(__DIR__ . '/_data/*.xml'));
     }
 
 
